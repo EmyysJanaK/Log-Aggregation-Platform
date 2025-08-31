@@ -1,7 +1,5 @@
 # Log-Aggregation-Platform
 
-# Log Aggregation Platform
-
 A scalable platform for collecting, processing, and analyzing logs from distributed systems.  
 This project provides real-time log aggregation, powerful query capabilities, and user-friendly dashboards to help you monitor and troubleshoot your applications.
 
