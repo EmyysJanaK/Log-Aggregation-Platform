@@ -13,6 +13,8 @@
         <module>common</module>
         <module>log-agent</module>
         <module>log-receiver</module>
+        <module>log-processor</module>
+        <module>log-dashboard</module>
     </modules>
 
     <properties>

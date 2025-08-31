@@ -4,11 +4,12 @@ package com.logaggregator.processor;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.logaggregator.common.LogEntry;
+import com.logaggregator.common.LogLevel;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.regex.Pattern;
 
 @Component
@@ -54,34 +55,33 @@ public class LogProcessor {
         enhanced.setTimestamp(original.getTimestamp());
 
         // Add processing metadata
-        enhanced.setProcessedAt(Instant.now());
+        enhanced.setProcessedTimestamp(LocalDateTime.now());
 
         // Extract error codes if present
         if (original.getMessage() != null) {
             java.util.regex.Matcher matcher = ERROR_CODE_PATTERN.matcher(original.getMessage());
             if (matcher.find()) {
-                enhanced.setErrorCode(matcher.group());
+                enhanced.addMetadata("errorCode", matcher.group());
             }
         }
 
         // Categorize log level
-        enhanced.setSeverity(categorizeSeverity(original.getLevel()));
+        enhanced.addMetadata("severity", categorizeSeverity(original.getLevel()));
 
         return enhanced;
     }
 
-    private String categorizeSeverity(String level) {
+    private String categorizeSeverity(LogLevel level) {
         if (level == null) return "UNKNOWN";
 
-        switch (level.toUpperCase()) {
-            case "ERROR":
-            case "FATAL":
+        switch (level) {
+            case ERROR:
+            case FATAL:
                 return "HIGH";
-            case "WARN":
+            case WARN:
                 return "MEDIUM";
-            case "INFO":
-            case "DEBUG":
-            case "TRACE":
+            case INFO:
+            case DEBUG:
                 return "LOW";
             default:
                 return "UNKNOWN";

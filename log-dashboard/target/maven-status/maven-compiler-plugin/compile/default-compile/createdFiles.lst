@@ -1,0 +1,5 @@
+com/logaggregator/dashboard/LogStats.class
+com/logaggregator/dashboard/LogSearchRepository.class
+com/logaggregator/dashboard/DashboardController.class
+com/logaggregator/dashboard/LogSearchService.class
+com/logaggregator/dashboard/LogDashboardApplication.class

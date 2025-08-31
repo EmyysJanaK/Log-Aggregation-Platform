@@ -1,0 +1,10 @@
+/home/runner/work/Log-Aggregation-Platform/Log-Aggregation-Platform/log-receiver/src/main/java/com/logaggregator/receiver/LogConsumer.java
+/home/runner/work/Log-Aggregation-Platform/Log-Aggregation-Platform/log-receiver/src/main/java/com/logaggregator/receiver/LogController.java
+/home/runner/work/Log-Aggregation-Platform/Log-Aggregation-Platform/log-receiver/src/main/java/com/logaggregator/receiver/LogNotFoundException.java
+/home/runner/work/Log-Aggregation-Platform/Log-Aggregation-Platform/log-receiver/src/main/java/com/logaggregator/receiver/LogReceiverApplication.java
+/home/runner/work/Log-Aggregation-Platform/Log-Aggregation-Platform/log-receiver/src/main/java/com/logaggregator/receiver/LogRepository.java
+/home/runner/work/Log-Aggregation-Platform/Log-Aggregation-Platform/log-receiver/src/main/java/com/logaggregator/receiver/simple/SimpleLogEntry.java
+/home/runner/work/Log-Aggregation-Platform/Log-Aggregation-Platform/log-receiver/src/main/java/com/logaggregator/receiver/simple/SimpleTest.java
+/home/runner/work/Log-Aggregation-Platform/Log-Aggregation-Platform/log-receiver/src/main/java/com/logaggregator/receiver/temp/LogFileSimulator.java
+/home/runner/work/Log-Aggregation-Platform/Log-Aggregation-Platform/log-receiver/src/main/java/com/logaggregator/receiver/test/TestLogEntry.java
+/home/runner/work/Log-Aggregation-Platform/Log-Aggregation-Platform/log-receiver/src/main/java/com/logaggregator/receiver/test/TestLogGenerator.java
