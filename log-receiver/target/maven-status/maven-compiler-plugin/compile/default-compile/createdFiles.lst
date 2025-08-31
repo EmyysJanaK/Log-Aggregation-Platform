@@ -1,0 +1,10 @@
+com/logaggregator/receiver/test/TestLogEntry.class
+com/logaggregator/receiver/simple/SimpleLogEntry.class
+com/logaggregator/receiver/test/TestLogGenerator.class
+com/logaggregator/receiver/temp/LogFileSimulator.class
+com/logaggregator/receiver/simple/SimpleTest.class
+com/logaggregator/receiver/LogReceiverApplication.class
+com/logaggregator/receiver/LogConsumer.class
+com/logaggregator/receiver/LogController.class
+com/logaggregator/receiver/LogRepository.class
+com/logaggregator/receiver/LogNotFoundException.class

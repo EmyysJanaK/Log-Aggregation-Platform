@@ -105,8 +105,14 @@ public class HealthMonitorService {
             OperatingSystemMXBean osBean = ManagementFactory.getOperatingSystemMXBean();
             MemoryMXBean memoryBean = ManagementFactory.getMemoryMXBean();
 
-            // CPU usage
-            lastCpuUsage = osBean.getProcessCpuLoad() * 100;
+            // CPU usage - use safe method that works across JVMs
+            if (osBean instanceof com.sun.management.OperatingSystemMXBean) {
+                com.sun.management.OperatingSystemMXBean sunOsBean = (com.sun.management.OperatingSystemMXBean) osBean;
+                lastCpuUsage = sunOsBean.getProcessCpuLoad() * 100;
+            } else {
+                // Fallback - approximate CPU usage
+                lastCpuUsage = osBean.getSystemLoadAverage();
+            }
 
             // Memory usage
             lastMemoryUsed = memoryBean.getHeapMemoryUsage().getUsed();
@@ -250,7 +256,14 @@ public class HealthMonitorService {
         // System metrics
         metrics.put("available_processors", osBean.getAvailableProcessors());
         metrics.put("system_load_average", osBean.getSystemLoadAverage());
-        metrics.put("process_cpu_load", osBean.getProcessCpuLoad());
+        
+        // CPU load - use safe method
+        if (osBean instanceof com.sun.management.OperatingSystemMXBean) {
+            com.sun.management.OperatingSystemMXBean sunOsBean = (com.sun.management.OperatingSystemMXBean) osBean;
+            metrics.put("process_cpu_load", sunOsBean.getProcessCpuLoad());
+        } else {
+            metrics.put("process_cpu_load", -1.0); // Not available
+        }
 
         // Agent metrics
         metrics.put("agent_uptime_ms", System.currentTimeMillis() - startTime);
